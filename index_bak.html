@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	mui.plusReady(function(){
+      		
+      		document.getElementById('login').addEventListener('tap',function(){
+      			bm=document.getElementById('bm').value;
+	      		username=document.getElementById('username').value;
+	      		pass=document.getElementById('pass').value;
+//	      		alert(bm+'-'+username+'-'+pass);
+	      		mui.ajax(
+	      			{
+	      			url:basicUrl+'public/userCheck.php',
+	      			data:{
+	      				bmname:bm,
+	      				yhname:username,
+	      				pwd:pass
+	      			},
+	      			dataType:'json',//服务器返回json格式数据
+	      			type:'get',//HTTP请求类型
+	      			timeout:10000,//超时时间设置为10秒；
+	      			success:function(data){
+	      				if(data){
+	      					mui.toast("欢迎你"+username+"登陆成功");
+				    			mui.openWindow({
+	      						url:'main.html',
+	      						id:'main'
+	      						});
+
+	      				}else{
+	      					mui.toast('用户名或密码错误，登陆失败！')
+	      				}
+	      			},
+	      			error:function(xhr,type,errorThrown){
+	      				mui.toast('网络连接失败，请联系管理员');
+	      			}
+	      		});
+      		});
+      	});
+    </script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <style type="text/css">
+    	
+    	*{
+    		background-colr:#00ff00;
+    		font-family: "微软雅黑";
+    		/*background-image: url(img/1.jpg);*/
+    	}
+    	
+    	.mui-input-group{
+    		margin-top: 10px;
+    		
+    	}
+    	.mui-bar-nav{
+				background-color: #2094DF;
+				color:white;
+			}
+		
+		.mui-title,.mui-icon-left-nav{
+				color:white;
+		}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <h1 class="mui-title">东友商砼管理软件</h1>
+	    
+	</header>
+	<div  class="mui-content">
+	    <form class="mui-input-group">
+	    	 <div class="mui-input-row">
+	            <label>部门</label>
+	            <input id="bm" type="text" class="mui-input-clear" value="行政部" placeholder="请选择部门">
+	        </div>
+	        <div class="mui-input-row">
+	            <label>用户</label>
+	            <input id="username" type="text" value="admin" class="mui-input-clear" placeholder="请选择用户名">
+	        </div>
+	         <div class="mui-input-row">
+	            <label>密码</label>
+	            <input id="pass" type="password" value="zhou8877" class="mui-input-clear" placeholder="请输入密码">
+	        </div>
+	        
+	    </form>
+	    <form class="mui-input-group">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						自动登录
+						<div id="autoLogin" class="mui-switch">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+		</form>
+		<div class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+				<!--<div class="link-area">
+					<a id='reg'>注册账号</a> 
+					<span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				</div>-->
+		</div>
+		<div class="mui-content-padded oauth-area">
+
+		</div>
+	</div>
+</body>
+
+</html>
