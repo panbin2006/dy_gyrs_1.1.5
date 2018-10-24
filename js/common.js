@@ -5,6 +5,7 @@ var basicUrl='http://192.168.101.88/zzjb_tp5/public/index/';
 				function qxcx(){
 					var qx_str = localStorage.getItem('qx'); //读取权限string
 					qx = JSON.parse(qx_str);
+					qx = eval('(' + qx + ')');
 //					mui.toast(typeof(qx[0].PPrint));
 					//console.log(qx_str);
 					//if(qx[0].PPrint=='1'){

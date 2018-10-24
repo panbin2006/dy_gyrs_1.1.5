@@ -66,7 +66,7 @@
 			var datee=myDataE(Date());
 //			alert(pdates);
 			mui.ajax({
-		            url:basicUrl+'mat/matinList.php',
+		            url:basicUrl+'matin/bySupplier',
 		             data:{
 		            	pdateS:dates,
 		            	pdateE:datee
@@ -77,7 +77,7 @@
 						var str='';
 						str+='<ul class="mui-table-view">';
 						for(var i=0;i<obj.length;i++){
-							var quality = Number(obj[i].Quality);
+							var quality = Number(obj[i].Quality)/1000;
 							str+='<li class="mui-table-view-cell">';
 							str+='<a id="matinD" class="mui-navigate-rigth">';
 							str+='<div style="width:60%;float: left">';
@@ -109,7 +109,7 @@
 					    //切换到第二个选项卡
 					    //根据具体业务，动态获得第二个选项卡内容；
 					    mui.ajax({
-				            url:basicUrl+'mat/matinBySuppier.php',
+				            url:basicUrl+'matin/byMatname',
 				             data:{
 				            	pdateS:dates,
 				            	pdateE:datee
@@ -120,7 +120,7 @@
 								var str='';
 								str+='<ul class="mui-table-view">';
 								for(var i=0;i<obj.length;i++){
-									var quality = Number(obj[i].Quality);
+									var quality = Number(obj[i].Quality)/1000;
 									str+='<li class="mui-table-view-cell">';
 									str+='<a id="matinD" class="mui-navigate-rigth">';
 									str+='<div style="width:60%;float: left">';

@@ -74,7 +74,7 @@
 			function show(projectname,custname){
 				plus.nativeUI.showWaiting("数据加载中……");
 		       	mui.ajax({
-		            url:basicUrl+'mpact/mpactm.php',
+		            url:basicUrl+'mpactm/index',
 		            data:{
 		            	projectname:projectname,
 		            	custname:custname
@@ -146,7 +146,7 @@
 				mui.confirm(infoArray[shstate]+'工程代码为：'+projectid+'的合同，确认吗？','修改审核状态' , btnArray, function(e) {
 					if (e.index == 1) {
 				       	mui.ajax({
-				            url:basicUrl+'mpact/mpactmsh.php',
+				            url:basicUrl+'mpactm/sh',
 				            data:{
 				            	projectid:projectid,
 				            	shstate:shstate

@@ -103,9 +103,9 @@
 						<!--模块选择九宫格-->
 						<ul class="mui-table-view mui-grid-view mui-grid-9">
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a  id="mpact" href="#">
-									<span class="mui-icon iconfont icon-jihua1"></span>
-									<div class="mui-media-body">合同订单</div>
+								<a  id="mpplancust" href="#">
+									<span class="mui-icon iconfont icon-beihuodan"></span>
+									<div class="mui-media-body">订货单</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -144,57 +144,13 @@
 						</ul>
 					</div>
 					
-					<!--第三页 -->
-					<div class="mui-slider-item">
-						<!--模块选择九宫格-->
-						<ul class="mui-table-view mui-grid-view mui-grid-9">
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a  id="mpact" href="#">
-									<span class="mui-icon iconfont icon-jihua1"></span>
-									<div class="mui-media-body">合同订单</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id='mpplan' href="#">
-									<span  class="mui-icon iconfont icon-jihua"></span>
-									<div class="mui-media-body">调度中心</div>
-								</a>
-							</li>
-							
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id='phb' href="#">
-									<span class="mui-icon iconfont icon-shiyanxiangmu"></span>
-									<div class="mui-media-body">配比管理</div>
-								</a>
-							</li>
-							
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id='msaleodd' href="#">
-									<span class="mui-icon iconfont icon-dingdan"></span>
-									<div class="mui-media-body">发货单</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a  id="matin" href="#">
-									<span class="mui-icon iconfont icon-cailiaoyongliang"></span>
-									<div  class="mui-media-body">原材料管理</div>
-								</a>
-							</li>
-							
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id='car' href="#">
-									<span class="mui-icon iconfont icon-jiaobanche"></span>
-									<div class="mui-media-body">车辆管理</div>
-								</a>
-							</li>
-						</ul>
-					</div>
+					<!--第三页  -->
+					
 				</div>
 				<div class="mui-slider-indicator">
-					<div class="mui-indicator mui-active"></div>
 					<div class="mui-indicator"></div>
 					<div class="mui-indicator"></div>
-				</div>
+								
 			</div>	
 			
 			<!--<div><h5 class="mui-title">生产运营情况表</h5></div>--> 
@@ -275,8 +231,10 @@
 			mui.plusReady(function(){
 				qxcx(); //读取权限
   				show(); //显示运营情况表
+  				
+  				//生产计划单
 	      		document.getElementById('mpplan').addEventListener('tap',function(){
-	      			mui.toast(qx[1].PRead);
+//	      			mui.toast(qx[1].PRead);
 	      			if(qx[1].PRead=='1'){
 //	      				mui.toast(1);
 		      			mui.openWindow({
@@ -315,6 +273,7 @@
 	      			}
 	      		});
 	      		
+	      		//材料入库
 	      		document.getElementById('matin').addEventListener('tap',function(){
 	      			if(qx[4].PRead=='1'){
 		      			mui.openWindow({
@@ -326,6 +285,7 @@
 	      			}
 	      		});
 	      		
+	      		//发货单
 	      		document.getElementById('msaleodd').addEventListener('tap',function(){
 	      			if(qx[2].PRead=='1'){
 		      			mui.openWindow({
@@ -360,6 +320,7 @@
 	      			}
 	      		});
 	      		
+	      		//车辆管理
 	      		document.getElementById('car').addEventListener('tap',function(){
 	      			if(qx[5].PRead=='1'){
 		      			mui.openWindow({
@@ -371,6 +332,7 @@
 	      			}
 	      		});
 	      		
+	      		//配合比
 	      		document.getElementById('phb').addEventListener('tap',function(){
 	      			if(qx[3].PRead=='1'){
 		      			mui.openWindow({
@@ -382,6 +344,7 @@
 	      			}
 	      		});
 	      		
+	      		//合同订单
 	      		document.getElementById('mpact').addEventListener('tap',function(){
 //	      			mui.toast("合同订单");
 					if(qx[0].PRead=='1'){
@@ -393,14 +356,40 @@
 	      				mui.toast("您没有此操作权限，请联系管理员！");
 	      			}
 	      		});
+	      		
+	      		//订货单
+	      		document.getElementById('mpplancust').addEventListener('tap',function(){
+	      			if(qx[1].PRead=='1'){
+		      			mui.openWindow({
+		      				url:'home/mpplancust/mpplancust_list.html',
+		      				id:'mpplancust',
+		      				styles:{},
+						    extras:{},
+						    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						    show:{
+						      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+						      event:'titleUpdate',//页面显示时机，默认为titleUpdate事件时显示
+						      extras:{}//窗口动画是否使用图片加速
+						    },
+						    waiting:{
+						      autoShow:true,//自动显示等待框，默认为true
+						      title:'正在加载...',//等待对话框上显示的提示内容
+						      options:{}
+						    }
+		      			});
+	      			}else{
+	      				mui.toast("您没有此操作权限，请联系管理员！");
+	      			}
+	      		});
 	      	});
 	      	
-//	      	document.getElementById('scjb').addEventListener('tap',function(){
-//	      		show();
-//	      	});
+	      	//生产简报显示
+	      	document.getElementById('scjb').addEventListener('tap',function(){
+	      		show();
+	      	});
 			
 			//模块滑动效果
-			//setInterval(show(),4000);
+			setInterval(show(),4000);
 		</script>
 	</body>
 	

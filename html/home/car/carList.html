@@ -22,22 +22,9 @@
 			mui.init();
 			var qx=null;
 			mui.plusReady(function(){
-////				读取权限（plus.storage方式）
-//				function qxcx(){
-//					var qx_str = localStorage.getItem('qx'); //读取权限string
-//					qx = JSON.parse(qx_str);
-////					mui.toast(typeof(qx[0].PPrint));
-//					console.log(qx_str);
-////					if(qx[0].PPrint=='1'){
-////						mui.toast(1);
-////					}else{
-////						mui.toast(0);
-////					}
-//				}
-				
 				qxcx(); //读取权限
 				mui.ajax({
-		            url:basicUrl+'car/carList.php',
+		            url:basicUrl+'carinfo/index',
 		            data:{},
 		            type:'GET',
 		            success:function(data){

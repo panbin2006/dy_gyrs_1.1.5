@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+		<style>
+			.mui-bar-nav{
+				height: 100px;
+			}
+			.mui-content{
+				margin-top: 35px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订货单</h1>
+		</header>
+		<div class="mui-content">
+			<ul id='list' class="mui-table-view">
+				<li class="mui-table-view-cell">
+					
+				</li>
+			</ul>
+			
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+		    
+		</nav>
+
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/webviewGroup.js"></script>
+		<script src="../../../js/common.js"></script>
+		<script src="../../../js/mytools.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+			
+				var pdate = myData(Date());
+				mui.ajax({
+					url: basicUrl + 'mpplancust/index',
+					data: {},
+					type: 'GET',
+					success: function(data) {
+						str="送货单列表";
+						mpplanList = document.getElementById('list');
+						mpplanList.innerHTML = str;
+					},
+					error: function(xhr, type, errorThrown) {
+						mui.toast(type);
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>
