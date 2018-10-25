@@ -153,7 +153,8 @@
 					"html/home/msaleodd/msaleoddList.html",
 					"html/home/phb/mphbProdList.html",
 					"html/home/mpact/mpactList.html",
-					"html/home/mat/matinList.html"
+					"html/home/mat/matinList.html",
+					"html/home/mpplancust/mpplancust_list.html"
 				],
 				"priority": 0
 			},
@@ -161,6 +162,13 @@
 				"resources": [],
 				"refer": [
 					"html/home/mpact/mpact_detail.html"
+				],
+				"priority": 0
+			},
+			"html/home/mpplancust/mpplancust_list.html": {
+				"resources": [],
+				"refer": [
+					"html/home/mpplancust/mpplancust_create.html"
 				],
 				"priority": 0
 			}

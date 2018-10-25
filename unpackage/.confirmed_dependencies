@@ -21,12 +21,18 @@
 			"html/home/msaleodd/msaleoddList.html",
 			"html/home/phb/mphbProdList.html",
 			"html/home/mpact/mpactList.html",
-			"html/home/mat/matinList.html"
+			"html/home/mat/matinList.html",
+			"html/home/mpplancust/mpplancust_list.html"
 		]
 	},
 	"html/home/mpact/mpactList.html": {
 		"refer": [
 			"html/home/mpact/mpact_detail.html"
+		]
+	},
+	"html/home/mpplancust/mpplancust_list.html": {
+		"refer": [
+			"html/home/mpplancust/mpplancust_create.html"
 		]
 	}
 }
