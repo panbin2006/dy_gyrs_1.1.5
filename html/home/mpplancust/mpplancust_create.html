@@ -18,44 +18,95 @@
 
 	<body>
 		<script src="../../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../../js/common.js" ></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init({
+	      		keyEventBind:{
+	      			backbutton:false
+	      		}
+      		});
+      		
+      		
+      		mui.plusReady(function(){
+      			
+      			var str = getElements('custform');//获取表单对象数组
+//    			for(var i=0;i<str.length;i++){
+//    				console.log(str[i]);  //打印表单对象数组
+//    			}
+
+      			
+      		//工程选择
+   			str['project'].addEventListener('tap',function(event){
+   				
+   				mui.ajax({
+	      			url:basicUrl+'mpactm/index', //tp5
+	      			data:{},
+	      			dataType:'json',//服务器返回json格式数据
+	      			type:'get',//HTTP请求类型
+	      			timeout:10000,//超时时间设置为10秒；
+	      			success:function(data){
+	      					
+							var obj=eval('(' + data + ')');
+//							console.log(obj[0].ProjectName);
+							console.log(obj['0'].projectid);
+							console.log(obj['0'].projectname);
+							console.log(obj['0'].custname);
+							
+	      			},
+	      			error:function(xhr,type,errorThrown){
+	      				mui.toast('网络连接失败，请联系管理员');
+	      			}
+	      		});
+      		},false);
+      			//
+				//施工部位选择
+				
+				//强度等级选择
+				
+				//特殊要求选择
+				
+				//坍落度选择
+				
+      			//保存
+      			
+      			//取消
+    
+      		
+      		});
+     
+			
 		</script>
 		<header class="mui-bar mui-bar-nav">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">订货单编辑</h1>
 		</header>
 		<div class="mui-content">
-		    <form class="mui-input-group">
-		    	<div class="mui-input-row">
-		            <label>订货单号</label>
-		            <input type="text" class="mui-input-clear TextBoxReadWrite" placeholder="单号自动生成">
-		        </div>
+		    <form id="custform" class="mui-input-group">
 		        <div class="mui-input-row">
 		            <label>工程代码</label>
-		            <input type="text" class="mui-input-clear" placeholder="工程代码">
+		            <input id="projectid" type="text" class="mui-input-clear" placeholder="工程代码">
 		        </div>
 		        
 		        <div class="mui-input-row">
 		            <label>工程名称</label>
-		            <input type="text" class="mui-input-clear" placeholder="工程名称">
+		            <input id="project" type="text" class="mui-input-clear" placeholder="工程名称" value="aaaa">
 		        </div>
 		        <div class="mui-input-row">
 		            <label>客户名称</label>
-		            <input type="text" class="mui-input-clear" placeholder="客户名称">
+		            <input id="cust" type="text" class="mui-input-clear" placeholder="客户名称">
 		        </div>
 		        <div class="mui-input-row">
 		            <label>施工单位</label>
-		            <input type="text" class="mui-input-clear" placeholder="施工单位">
+		            <input id="biudll" type="text" class="mui-input-clear" placeholder="施工单位">
 		        </div>
 
 		        <div class="mui-input-row">
 		            <label>合同编号</label>
-		            <input type="text" class="mui-input-clear" placeholder="合同编号">
+		            <input id="htbh" type="text" class="mui-input-clear" placeholder="合同编号">
 		        </div>
 		        <div class="mui-input-row">
 		            <label>施工部位</label>
-		            <input type="text" class="mui-input-clear" placeholder="施工部位">
+		            <input  id="part" type="text" class="mui-input-clear" placeholder="施工部位">
 		        </div>
 		        <div class="mui-input-row">
 		            <label>强度等级</label>
@@ -63,35 +114,32 @@
 		        </div>
 		        <div class="mui-input-row">
 		            <label>特殊要求</label>
-		            <input type="text" class="mui-input-clear" placeholder="特殊要求">
+		            <input id="tsname" type="text" class="mui-input-clear" placeholder="特殊要求">
 		        </div>
 		        <div class="mui-input-row">
 		            <label>坍 落 度</label>
-		            <input type="text" class="mui-input-clear" placeholder="合同编号">
+		            <input id="tld" type="text" class="mui-input-clear" placeholder="合同编号">
 		        </div>
 		        <div class="mui-input-row">
 		            <label>订货方量</label>
-		            <input type="text" class="mui-input-clear" placeholder="订货方量">
+		            <input id="quality" type="text" class="mui-input-clear" placeholder="订货方量">
 		        </div>
 
 		        <div class="mui-input-row">
 		            <label>备    注</label>
-		            <input type="text" class="mui-input-clear" placeholder="备注">
+		            <input id="remark2" type="text" class="mui-input-clear" placeholder="备注">
 		        </div>
 		        
 		    </form>
 		    
 		    <div class="mui-content-padded">
 		    	
-		    		<div style="width:30%;float: left">
-						<button id='login' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
+		    		<div style="width:20%;float: left">
+						<button id='save' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
 					</div>
-					<div style="width:30%;float: right">
-						<button id='login' class="mui-btn mui-btn-block mui-btn-danger">取消</button>
+					<div style="width:20%;float: right">
+						<button id='esc' class="mui-btn mui-btn-block mui-btn-danger">取消</button>
 					</div>
-				
-			
-			    
 		</div>
 	</body>
 

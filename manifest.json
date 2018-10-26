@@ -154,7 +154,8 @@
 					"html/home/phb/mphbProdList.html",
 					"html/home/mpact/mpactList.html",
 					"html/home/mat/matinList.html",
-					"html/home/mpplancust/mpplancust_list.html"
+					"html/home/mpplancust/mpplancust_list.html",
+					"html/home/car/carList.html"
 				],
 				"priority": 0
 			},
@@ -208,7 +209,6 @@
 				"html/home/mat/matinList_back.html",
 				"js/mytools.js",
 				"img/1.jpg",
-				"html/home/car/carList.html",
 				"css/mui.min.css",
 				"html/home/mat/matinD.html",
 				"html/home/msaleodd/msaleoddList_bak.html",

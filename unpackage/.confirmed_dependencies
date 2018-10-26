@@ -22,7 +22,8 @@
 			"html/home/phb/mphbProdList.html",
 			"html/home/mpact/mpactList.html",
 			"html/home/mat/matinList.html",
-			"html/home/mpplancust/mpplancust_list.html"
+			"html/home/mpplancust/mpplancust_list.html",
+			"html/home/car/carList.html"
 		]
 	},
 	"html/home/mpact/mpactList.html": {
