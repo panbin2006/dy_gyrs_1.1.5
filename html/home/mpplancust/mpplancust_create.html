@@ -29,47 +29,78 @@
       		
       		mui.plusReady(function(){
       			
-      			var str = getElements('custform');//获取表单对象数组
+      			//1.获取表单对象数组
+      			var inp_arr = getElements('custform');
 //    			for(var i=0;i<str.length;i++){
 //    				console.log(str[i]);  //打印表单对象数组
 //    			}
 
+      			//2.生成订单号
+      			var self = plus.webview.currentWebview();//获取当前窗体对象
+      			var dh   = self.dh;
+      			console.log(dh);
+//				inp_arr['ddh'].value = id;
+      			/*
+      			inp_arr['ddh'].addEventListener('tap',function(event){
+	   				
+	   				mui.ajax({
+		      			url:basicUrl+'scoding/index', //tp5
+		      			data:{
+		      				ModuleID:'Mpplancust',
+		      				CoID:'02',
+		      				IsUpdate:1,
+		      				PDate:'2018-10-27',
+		      				PType:''
+		      			},
+		      			dataType:'json',//服务器返回json格式数据
+		      			type:'get',//HTTP请求类型
+		      			timeout:10000,//超时时间设置为10秒；
+		      			success:function(data){
+								var obj=eval('(' + data + ')');
+								console.log(obj['0'].codeid);
+		      			},
+		      			error:function(xhr,type,errorThrown){
+		      				mui.toast('网络连接失败，请联系管理员');
+		      			}
+		      		});
+	      		},false);
+	      		*/
+	      		
+	      		//3.工程选择
+	   			inp_arr['project'].addEventListener('tap',function(event){
+	   				
+	   				mui.ajax({
+		      			url:basicUrl+'mpactm/index', //tp5
+		      			data:{},
+		      			dataType:'json',//服务器返回json格式数据
+		      			type:'get',//HTTP请求类型
+		      			timeout:10000,//超时时间设置为10秒；
+		      			success:function(data){
+		      					
+								var obj=eval('(' + data + ')');
+	//							console.log(obj[0].ProjectName);
+								console.log(obj['0'].projectid);
+								console.log(obj['0'].projectname);
+								console.log(obj['0'].custname);
+								
+		      			},
+		      			error:function(xhr,type,errorThrown){
+		      				mui.toast('网络连接失败，请联系管理员');
+		      			}
+		      		});
+	      		},false);
       			
-      		//工程选择
-   			str['project'].addEventListener('tap',function(event){
-   				
-   				mui.ajax({
-	      			url:basicUrl+'mpactm/index', //tp5
-	      			data:{},
-	      			dataType:'json',//服务器返回json格式数据
-	      			type:'get',//HTTP请求类型
-	      			timeout:10000,//超时时间设置为10秒；
-	      			success:function(data){
-	      					
-							var obj=eval('(' + data + ')');
-//							console.log(obj[0].ProjectName);
-							console.log(obj['0'].projectid);
-							console.log(obj['0'].projectname);
-							console.log(obj['0'].custname);
-							
-	      			},
-	      			error:function(xhr,type,errorThrown){
-	      				mui.toast('网络连接失败，请联系管理员');
-	      			}
-	      		});
-      		},false);
-      			//
-				//施工部位选择
+				//4.施工部位选择
 				
-				//强度等级选择
+				//5.强度等级选择
 				
-				//特殊要求选择
+				//6.特殊要求选择
 				
-				//坍落度选择
+				//7.坍落度选择
 				
-      			//保存
+      			//8.保存
       			
-      			//取消
+      			//9.取消
     
       		
       		});
@@ -82,6 +113,10 @@
 		</header>
 		<div class="mui-content">
 		    <form id="custform" class="mui-input-group">
+		    	<div class="mui-input-row">
+		            <label>订货单号</label>
+		            <input id="ddh" type="text" class="mui-input-clear" value='123' placeholder="订货单号">
+		        </div>
 		        <div class="mui-input-row">
 		            <label>工程代码</label>
 		            <input id="projectid" type="text" class="mui-input-clear" placeholder="工程代码">

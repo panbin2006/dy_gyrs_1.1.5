@@ -78,3 +78,32 @@ var basicUrl='http://192.168.101.88/zzjb_tp5/public/index/';
         var params = serializeForm('login');
         alert(params);
     }
+    
+	//单据代码 生成
+	function coding(ModuleID,CoID,IsUpdate,PDate,PType){
+		dh = '';
+		mui.ajax({
+  			url:basicUrl+'scoding/index', //tp5
+  			data:{
+  				ModuleID:ModuleID,
+  				CoID:CoID,
+  				IsUpdate:IsUpdate,
+  				PDate:PDate,
+  				PType:PType
+  			},
+  			dataType:'json',//服务器返回json格式数据
+  			type:'get',//HTTP请求类型
+  			async:false,//这里选择异步为false，那么这个程序执行到这里的时候会暂停，等待
+                    //数据加载完成后才继续执行
+  			timeout:10000,//超时时间设置为10秒；
+  			success:function(data){
+					var obj=eval('(' + data + ')');
+					dh = obj['0'].codeid;
+//					console.log(obj['0'].codeid);
+  			},
+  			error:function(xhr,type,errorThrown){
+  				mui.toast('网络连接失败，请联系管理员');
+  			}
+  		});
+  		return dh;
+	}

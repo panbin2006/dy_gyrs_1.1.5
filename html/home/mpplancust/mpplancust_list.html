@@ -89,6 +89,9 @@
 				qxcx(); //读取权限
 				document.getElementById('mpplancust_create').addEventListener('tap',function(){
 	      			if(qx[1].PAdd=='1'){
+	      				//生成订货单编号
+	      				var dh = coding('Mpplancust','02',1,'2018-10-27','');
+	      				console.log(dh);
 		      			mui.openWindow({
 		      				url:'mpplancust_create.html',
 		      				id:'mpplancust_create',
@@ -98,7 +101,7 @@
 						    show:{
 						      autoShow:true,//页面loaded事件发生后自动显示，默认为true
 						      event:'titleUpdate',//页面显示时机，默认为titleUpdate事件时显示
-						      extras:{}//窗口动画是否使用图片加速
+						      extras:{dh:'123'}//窗口动画是否使用图片加速
 						    },
 						    waiting:{
 						      autoShow:true,//自动显示等待框，默认为true
